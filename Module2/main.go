@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
 	var plantCapacities []float64
 
@@ -13,7 +17,7 @@ func main() {
 
 	utilization := gridLoad / capacity
 
-	println("Capacity: ", capacity)
-	println("Load: ", gridLoad)
-	println("Utilization: ", utilization)
+	fmt.Printf("%-20s%.0f\n", "Capacity:", capacity)
+	fmt.Printf("%-20s%.0f\n", "Load:", gridLoad)
+	fmt.Printf("%-20s%.1f%%\n", "Utilization:", utilization*100)
 }
