@@ -11,10 +11,7 @@ func main() {
 
 	var gridLoad = 75.
 
-	fmt.Println("1) Generate Power Plant Report")
-	fmt.Println("2) Generate Power Grid Report")
-	fmt.Println("Please choose and option: ")
-
+	displayReportMenu()
 	var option string
 	fmt.Scanln(&option)
 
@@ -26,6 +23,12 @@ func main() {
 	default:
 		fmt.Println("Unknown option, no action taken")
 	}
+}
+
+func displayReportMenu() {
+	fmt.Println("1) Generate Power Plant Report")
+	fmt.Println("2) Generate Power Grid Report")
+	fmt.Println("Please choose and option: ")
 }
 
 func generatePlantCapacityReport(plantCapacities ...float64) {
