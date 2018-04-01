@@ -12,8 +12,7 @@ var (
 
 func main() {
 	displayReportMenu()
-	var option = getReportMenuOption()
-	handleReportMenuOption(option)
+	handleReportMenuOption(getReportMenuOption())
 }
 
 func displayReportMenu() {
