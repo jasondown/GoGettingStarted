@@ -4,16 +4,31 @@ import (
 	"fmt"
 )
 
+var (
+	plantCapacities = []float64{30, 30, 30, 60, 60, 100}
+	activePlants    = []int{0, 1}
+	gridLoad        = 75.
+)
+
 func main() {
-	plantCapacities := []float64{30, 30, 30, 60, 60, 100}
-
-	activePlants := []int{0, 1}
-
-	var gridLoad = 75.
-
 	displayReportMenu()
+	var option = getReportMenuOption()
+	handleReportMenuOption(option)
+}
+
+func displayReportMenu() {
+	fmt.Println("1) Generate Power Plant Report")
+	fmt.Println("2) Generate Power Grid Report")
+	fmt.Println("Please choose and option: ")
+}
+
+func getReportMenuOption() string {
 	var option string
 	fmt.Scanln(&option)
+	return option
+}
+
+func handleReportMenuOption(option string) {
 
 	switch option {
 	case "1":
@@ -23,12 +38,6 @@ func main() {
 	default:
 		fmt.Println("Unknown option, no action taken")
 	}
-}
-
-func displayReportMenu() {
-	fmt.Println("1) Generate Power Plant Report")
-	fmt.Println("2) Generate Power Grid Report")
-	fmt.Println("Please choose and option: ")
 }
 
 func generatePlantCapacityReport(plantCapacities ...float64) {
