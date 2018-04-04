@@ -11,6 +11,6 @@ func main() {
 
 func abcGen() {
 	for l := byte('a'); l <= byte('z'); l++ {
-		println(string(l))
+		go println(string(l))
 	}
 }
