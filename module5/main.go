@@ -42,27 +42,10 @@ func handleReportMenuOption(option string) {
 	case "1":
 		grid.generatePlantReport()
 	case "2":
-		// TODO
+		grid.generateGridReport()
 	default:
 		fmt.Println("Unknown option, no action taken")
 	}
-}
-
-// func generatePlantCapacityReport(plantCapacities ...float64) {
-// 	for idx, cap := range plantCapacities {
-// 		fmt.Printf("Plant %d capacity: %.0f\n", idx, cap)
-// 	}
-// }
-
-func generatePowerGridReport(activePlants []int, plantCapacities []float64, gridLoad float64) {
-	capacity := 0.
-	for _, plantID := range activePlants {
-		capacity += plantCapacities[plantID]
-	}
-
-	fmt.Printf("%-20s%.0f\n", "Capacity:", capacity)
-	fmt.Printf("%-20s%.0f\n", "Load:", gridLoad)
-	fmt.Printf("%-20s%.1f%%\n", "Utilization:", gridLoad/capacity*100)
 }
 
 type PlantType string
@@ -102,4 +85,20 @@ func (pg *PowerGrid) generatePlantReport() {
 		fmt.Printf("%-20s%s\n", "Status:", p.status)
 		fmt.Println("")
 	}
+}
+
+func (pg *PowerGrid) generateGridReport() {
+	capacity := 0.
+	for _, p := range pg.plants {
+		if p.status == active {
+			capacity += p.capacity
+		}
+	}
+
+	label := "Power Grid Report"
+	fmt.Println(label)
+	fmt.Println(strings.Repeat("-", len(label)))
+	fmt.Printf("%-20s%.0f\n", "Capacity:", capacity)
+	fmt.Printf("%-20s%.0f\n", "Load:", pg.load)
+	fmt.Printf("%-20s%.2f%%\n", "Utilization:", pg.load/capacity*100)
 }
