@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	plants := []PowerPlant{
+	plants = []PowerPlant{
 		PowerPlant{hydro, 300, active},
 		PowerPlant{wind, 30, active},
 		PowerPlant{wind, 25, inactive},
@@ -15,11 +15,10 @@ var (
 		PowerPlant{solar, 40, inactive},
 	}
 
-	grid := PowerGrid{300, plants}
+	grid = PowerGrid{300, plants}
 )
 
 func main() {
-
 
 	displayReportMenu()
 	handleReportMenuOption(getReportMenuOption())
@@ -70,26 +69,26 @@ type PlantType string
 
 const (
 	hydro PlantType = "Hydro"
-	wind PlantType = "Wind"
+	wind  PlantType = "Wind"
 	solar PlantType = "Solar"
 )
 
 type PlantStatus string
 
 const (
-	active PlantStatus = "Active"
-	inactive PlantStatus = "Inactive"
+	active      PlantStatus = "Active"
+	inactive    PlantStatus = "Inactive"
 	unavailable PlantStatus = "Unavailable"
 )
 
 type PowerPlant struct {
 	plantType PlantType
-	capacity float64
-	status PlantStatus
+	capacity  float64
+	status    PlantStatus
 }
 
 type PowerGrid struct {
-	load float64
+	load   float64
 	plants []PowerPlant
 }
 
