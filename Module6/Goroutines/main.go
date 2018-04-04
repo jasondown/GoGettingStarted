@@ -1,8 +1,12 @@
 package main
 
-import "time"
+import (
+	"runtime"
+	"time"
+)
 
 func main() {
+	runtime.GOMAXPROCS(8)
 	go abcGen()
 
 	println("This comes first!")
