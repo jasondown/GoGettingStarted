@@ -1,7 +1,12 @@
 package main
 
+import "time"
+
 func main() {
-	abcGen()
+	go abcGen()
+
+	println("This comes first!")
+	time.Sleep(100 * time.Millisecond)
 }
 
 func abcGen() {
